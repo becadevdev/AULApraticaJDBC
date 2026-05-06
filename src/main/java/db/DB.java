@@ -1,5 +1,5 @@
 //metodos acessores do banco do dados
-package org.example.db;
+package db;
 
 import java.io.FileInputStream;
 import java.io.IOException;
@@ -30,6 +30,16 @@ public class DB {
            }
        }
        return conn; //
+    }
+
+    public static void closeConnection(){
+        if(conn != null){
+            try {
+                conn.close();
+            } catch (SQLException e) {
+                throw new DbException(e.getMessage());
+            }
+        }
     }
 
     public static Properties loadProperties() {
